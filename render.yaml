@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: ai-mystery-room-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_TEXT_MODEL
+        sync: false
+      - key: GEMINI_IMAGE_MODEL
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: ENABLE_IMAGES
+        value: "false"
+      - key: ENABLE_CAM
+        value: "false"
